@@ -1,4 +1,4 @@
-# HungarianAlgorithm
+# Q4 from the n1 UNI in MY using HungarianAlgorithm
 A Java implementation of the Kuhn–Munkres assignment algorithm:
 https://en.wikipedia.org/wiki/Hungarian_algorithm
 
