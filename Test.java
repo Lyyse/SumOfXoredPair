@@ -6,7 +6,7 @@
  */
 public class Test {
 
-    public static void main(String[] args) {
+    public static void mainDahLama(String[] args) {
 
       // the problem is written in the form of a matrix
       int[][] dataMatrix = {
