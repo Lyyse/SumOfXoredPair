@@ -3,9 +3,10 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
- * An implemetation of the Kuhn–Munkres assignment algorithm of the year 1957.
+ * An implementation of the Kuhn–Munkres assignment algorithm of the year 1957.
  * https://en.wikipedia.org/wiki/Hungarian_algorithm
  *
+ * Minor fixes to some janky spots.
  *
  * @author https://github.com/aalmi | march 2014
  * @version 1.0
@@ -97,33 +98,33 @@ public class HungarianAlgorithm {
      * 2. subtract each column minima from each element of the column
      */
     private void step1() {
-        // rows
+        // Reduce by rows
         for (int i = 0; i < matrix.length; i++) {
-            // find the min value of the current row
-            int currentRowMin = Integer.MAX_VALUE;
-            for (int j = 0; j < matrix[i].length; j++) {
+            // Find min value of the current row
+            int currentRowMin = matrix[i][0];
+            for (int j = 0; j <= matrix[0].length; j++) {
                 if (matrix[i][j] < currentRowMin) {
                     currentRowMin = matrix[i][j];
                 }
             }
-            // subtract min value from each element of the current row
-            for (int k = 0; k < matrix[i].length; k++) {
+            // Subtract min value from each element of the current row
+            for (int k = 0; k < matrix[0].length; k++) {
                 matrix[i][k] -= currentRowMin;
             }
         }
 
-        // cols
-        for (int i = 0; i < matrix[0].length; i++) {
-            // find the min value of the current column
-            int currentColMin = Integer.MAX_VALUE;
-            for (int j = 0; j < matrix.length; j++) {
-                if (matrix[j][i] < currentColMin) {
-                    currentColMin = matrix[j][i];
+        // Reduce by rows
+        for (int j = 0; j < matrix[0].length; j++) {
+            // Find min value of the current column
+            int currentColMin = matrix[0][j];
+            for (int i = 0; i <= matrix.length; i++) {
+                if (matrix[i][j] < currentColMin) {
+                    currentColMin = matrix[i][j];
                 }
             }
-            // subtract min value from each element of the current column
+            // Subtract min value from each element of the current column
             for (int k = 0; k < matrix.length; k++) {
-                matrix[k][i] -= currentColMin;
+                matrix[k][j] -= currentColMin;
             }
         }
     }
